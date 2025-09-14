@@ -1,0 +1,29 @@
+import { useState } from "react";
+
+const KEY = "f5fb59f4";
+
+export function useApiRequest() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [data, setData] = useState(null);
+
+  async function fetchData(query) {
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `http://www.omdbapi.com/?s=${query}&apikey=${KEY}`
+      );
+      if (!res || null) throw new Error("Request error!");
+
+      const json = await res.json();
+      setData(json);
+      console.log(data);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return { loading, error, data, fetchData };
+}
