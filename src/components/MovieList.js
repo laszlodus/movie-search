@@ -1,0 +1,14 @@
+export function MovieList({ data }) {
+  if (!data) return null;
+
+  const movies = data.Search.map((mov) => {
+    return (
+      <div key={mov.imdbID}>
+        <h1>{mov.Title}</h1>
+        <img src={mov.Poster} alt={mov.Title}></img>
+        <p className="movie-year">{mov.Year}</p>
+      </div>
+    );
+  });
+  return <main className="movie-list">{movies}</main>;
+}

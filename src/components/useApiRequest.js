@@ -13,9 +13,11 @@ export function useApiRequest() {
       const res = await fetch(
         `http://www.omdbapi.com/?s=${query}&apikey=${KEY}`
       );
-      if (!res || null) throw new Error("Request error!");
+      if (!res.ok) throw new Error("Request error!");
 
       const json = await res.json();
+      if (json.Response === "False") throw new Error("Movie not found");
+
       setData(json);
       console.log(data);
     } catch (error) {
