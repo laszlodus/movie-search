@@ -1,9 +1,9 @@
-export function MovieList({ data }) {
+export function MovieList({ data, onSelectMovie }) {
   if (!data) return null;
 
   const movies = data.Search.map((mov) => {
     return (
-      <div key={mov.imdbID}>
+      <div key={mov.imdbID} onClick={() => onSelectMovie(mov)}>
         <h1>{mov.Title}</h1>
         <img src={mov.Poster} alt={mov.Title}></img>
         <p className="movie-year">{mov.Year}</p>
