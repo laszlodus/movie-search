@@ -68,6 +68,14 @@ body {
   cursor: pointer;
 }
 
+.watched-button {
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #6d2be7;
+  color: #fff;
+}
+
 /* Main */
 
 .movie-list {
@@ -120,6 +128,27 @@ body {
   cursor: pointer;
 }
 
+.modal-header {
+  text-align: center;
+}
+
+.modal-button {
+  text-align: center;
+  padding: 1rem;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.delete-btn {
+  background-color: #6d2be7;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -128,5 +157,29 @@ body {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (min-width: 768px) {
+  .movie-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1440px) {
+  .movie-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .App {
+    max-width: 160rem;
   }
 }

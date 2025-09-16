@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export function Header({ onSearch }) {
+export function Header({ onSearch, openSavedModal }) {
   const date = new Date();
   const year = date.getFullYear();
   const [query, setQuery] = useState("");
@@ -29,6 +29,9 @@ export function Header({ onSearch }) {
           Search
         </button>
       </div>
+      <button className="watched-button" onClick={openSavedModal}>
+        My Watchlist
+      </button>
     </header>
   );
 }

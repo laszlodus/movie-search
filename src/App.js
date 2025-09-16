@@ -4,6 +4,7 @@ import { useApiRequest } from "./components/useApiRequest.js";
 import { MovieList } from "./components/MovieList.js";
 import { useEffect, useState } from "react";
 import { MovieCard } from "./components/MovieCard.js";
+import SavedMoviesModal from "./components/SavedMoviesModal.js";
 
 const KEY = "f5fb59f4";
 
@@ -13,6 +14,13 @@ function App() {
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [loadingDetails, setLoadingDetails] = useState(false);
   const [errorDetails, setErrorDetails] = useState(null);
+
+  const [watched, setWatched] = useState(() => {
+    const saved = localStorage.getItem("watched");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  const [showSavedModal, setShowSavedModal] = useState(false);
 
   function Loading({ loading, loadingDetails }) {
     if (!loading || loadingDetails) return null;
@@ -29,6 +37,15 @@ function App() {
   }
 
   function closeModal() {
+    setSelectedMovieDetails(null);
+    setShowSavedModal(false);
+  }
+
+  function saveMovie(movie, userRating) {
+    const newMovie = { movie, userRating };
+    const updateWatched = [...watched, newMovie];
+    setWatched(updateWatched);
+    localStorage.setItem("watched", JSON.stringify(updateWatched));
     setSelectedMovieDetails(null);
   }
 
@@ -54,7 +71,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header onSearch={fetchData} />
+      <Header
+        onSearch={fetchData}
+        openSavedModal={() => setShowSavedModal(true)}
+      />
       {loading && <Loading loading={loading} loadingDetails={loadingDetails} />}
       {error && <ErrorHandle error={error} errorDetails={errorDetails} />}
       {!loading && !error && (
@@ -64,6 +84,14 @@ function App() {
         <MovieCard
           selectedMovieDetails={selectedMovieDetails}
           closeModal={closeModal}
+          saveMovie={saveMovie}
+        />
+      ) : null}
+      {showSavedModal ? (
+        <SavedMoviesModal
+          watched={watched}
+          closeModal={closeModal}
+          setWatched={setWatched}
         />
       ) : null}
     </div>
