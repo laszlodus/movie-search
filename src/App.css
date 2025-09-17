@@ -121,6 +121,11 @@ body {
   font-size: 1.6rem;
 }
 
+.watched-message {
+  text-align: center;
+  color: #6d2be7;
+}
+
 .close-btn {
   font-size: 2rem;
   background: none;
@@ -157,8 +162,8 @@ body {
 
 .loading-text {
   text-align: center;
-  font-size: 1.5rem;
-  color: #333;
+  font-size: 3.2rem;
+  color: var(--primary-color);
   margin: 2rem 0;
 }
 

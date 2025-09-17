@@ -8,6 +8,8 @@ export function useApiRequest() {
   const [data, setData] = useState(null);
 
   async function fetchData(query) {
+    setError(null);
+    if (query.length < 2) return;
     setLoading(true);
     try {
       const res = await fetch(
@@ -19,7 +21,6 @@ export function useApiRequest() {
       if (json.Response === "False") throw new Error("Movie not found");
 
       setData(json);
-      console.log(data);
     } catch (error) {
       setError(error);
     } finally {

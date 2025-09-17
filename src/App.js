@@ -26,6 +26,10 @@ function App() {
     ? watched.some((item) => item.movie.imdbID === selectedMovieDetails.imdbID)
     : false;
 
+  const alreadyRated = selectedMovieDetails
+    ? watched.find((mov) => mov.movie.imdbID === selectedMovieDetails.imdbID)
+    : null;
+
   function Loading({ loading, loadingDetails }) {
     if (!loading || loadingDetails) return null;
     return <p className="loading-text">Loading...</p>;
@@ -33,7 +37,7 @@ function App() {
 
   function ErrorHandle({ error, errorDetails }) {
     if (!error || errorDetails) return null;
-    return <p>{error.message}</p>;
+    return <p className="loading-text">{error.message}!</p>;
   }
 
   function onSelectMovie(mov) {
@@ -52,6 +56,7 @@ function App() {
     setWatched(updateWatched);
     localStorage.setItem("watched", JSON.stringify(updateWatched));
     setSelectedMovieDetails(null);
+    SetSelectedMovie(null);
   }
 
   useEffect(() => {
@@ -91,6 +96,7 @@ function App() {
           closeModal={closeModal}
           saveMovie={saveMovie}
           isAlreadyWatched={isAlreadyWatched}
+          alreadyRated={alreadyRated?.userRating}
         />
       ) : null}
       {showSavedModal ? (

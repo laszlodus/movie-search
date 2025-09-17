@@ -6,6 +6,7 @@ export function MovieCard({
   closeModal,
   saveMovie,
   isAlreadyWatched,
+  alreadyRated,
 }) {
   const [userRating, setUserRating] = useState(0);
 
@@ -30,20 +31,26 @@ export function MovieCard({
             X
           </button>
         </div>
-
         <div className="modal-header">
           <h1>Title: {title}</h1>
           <img src={poster} alt={title}></img>
         </div>
-
         <p>Country: {country}</p>
         <p>Director: {director}</p>
         <p>Genre: {genre}</p>
         <p>Language: {language}</p>
         <p>Plot: {plot}</p>
-        <p>
-          Imdb Rating: {imdbRating}⭐ Your Rating: {userRating} ⭐
-        </p>
+        {!isAlreadyWatched ? (
+          <>
+            <p>
+              Imdb Rating: {imdbRating}⭐ Your Rating: {userRating} ⭐
+            </p>
+          </>
+        ) : (
+          <p>
+            Imdb Rating: {imdbRating}⭐ Your Rating: {alreadyRated}⭐
+          </p>
+        )}
         <p>Runtime: {runtime}</p>
         {!isAlreadyWatched ? (
           <>
@@ -58,7 +65,7 @@ export function MovieCard({
             </div>
           </>
         ) : (
-          <p>You already watched a movie!</p>
+          <p className="watched-message">You already watched a movie!</p>
         )}
       </div>
     </section>
