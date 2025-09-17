@@ -12,7 +12,7 @@ export function useApiRequest() {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
+        `https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
       );
       if (!res.ok) throw new Error("Request error!");
 

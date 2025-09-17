@@ -64,7 +64,7 @@ function App() {
       setLoadingDetails(true);
       try {
         const res = await fetch(
-          `http://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`
+          `https://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`
         );
         if (!res.ok) throw new Error("Movie details error!");
         const data = await res.json();
