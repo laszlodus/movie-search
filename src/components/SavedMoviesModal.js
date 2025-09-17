@@ -12,9 +12,11 @@ export default function SavedMoviesModal({ watched, closeModal, setWatched }) {
   return (
     <section className="modal-overlay">
       <div className="modal">
-        <button className="close-btn" onClick={closeModal}>
-          X
-        </button>
+        <div className="modalButton">
+          <button className="close-btn" onClick={closeModal}>
+            X
+          </button>
+        </div>
         {watched.map((movie, index) => (
           <div className="modal-container" key={index}>
             <h1>{movie.movie.Title}</h1>

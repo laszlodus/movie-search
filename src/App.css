@@ -53,6 +53,7 @@ body {
   max-width: 30rem;
   padding: 1rem;
   border-radius: 1rem;
+  margin: 0.5rem;
 }
 
 .search-container {
@@ -66,10 +67,11 @@ body {
   color: var(--background-color);
   font-size: 1.6rem;
   cursor: pointer;
+  margin: 0.5rem;
 }
 
 .watched-button {
-  margin: 0.5rem;
+  margin: 1rem;
   padding: 1rem;
   border-radius: 1rem;
   background-color: #6d2be7;
@@ -106,6 +108,7 @@ body {
   z-index: 1000;
 }
 .modal {
+  position: relative;
   background-color: var(--background-color);
   padding: 2rem;
   border-radius: 0.5rem;
@@ -119,13 +122,16 @@ body {
 }
 
 .close-btn {
-  position: absolute;
-  top: 10rem;
-  right: 3rem;
   font-size: 2rem;
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.modalButton {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
 }
 
 .modal-header {
@@ -149,6 +155,34 @@ body {
   border-radius: 1rem;
 }
 
+.loading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+  margin: 2rem 0;
+}
+
+/* MovieList */
+
+.background-img {
+  width: 100%;
+  height: calc(100vh - 384px);
+  display: flex;
+  justify-content: center;
+}
+
+.background-img img {
+  width: 100%;
+  max-width: 1600px; /* nagy képernyőn ne legyen túl széles */
+  height: auto;
+  object-fit: cover; /* a kép arányait megtartja, kitölti a divet */
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 1.6rem;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;

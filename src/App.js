@@ -5,6 +5,7 @@ import { MovieList } from "./components/MovieList.js";
 import { useEffect, useState } from "react";
 import { MovieCard } from "./components/MovieCard.js";
 import SavedMoviesModal from "./components/SavedMoviesModal.js";
+import Footer from "./components/Footer.js";
 
 const KEY = "f5fb59f4";
 
@@ -21,10 +22,13 @@ function App() {
   });
 
   const [showSavedModal, setShowSavedModal] = useState(false);
+  const isAlreadyWatched = selectedMovieDetails
+    ? watched.some((item) => item.movie.imdbID === selectedMovieDetails.imdbID)
+    : false;
 
   function Loading({ loading, loadingDetails }) {
     if (!loading || loadingDetails) return null;
-    return <p>Loading...</p>;
+    return <p className="loading-text">Loading...</p>;
   }
 
   function ErrorHandle({ error, errorDetails }) {
@@ -39,6 +43,7 @@ function App() {
   function closeModal() {
     setSelectedMovieDetails(null);
     setShowSavedModal(false);
+    SetSelectedMovie(null);
   }
 
   function saveMovie(movie, userRating) {
@@ -85,6 +90,7 @@ function App() {
           selectedMovieDetails={selectedMovieDetails}
           closeModal={closeModal}
           saveMovie={saveMovie}
+          isAlreadyWatched={isAlreadyWatched}
         />
       ) : null}
       {showSavedModal ? (
@@ -94,6 +100,7 @@ function App() {
           setWatched={setWatched}
         />
       ) : null}
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import StarRating from "./StarRating";
 
-export function MovieCard({ selectedMovieDetails, closeModal, saveMovie }) {
+export function MovieCard({
+  selectedMovieDetails,
+  closeModal,
+  saveMovie,
+  isAlreadyWatched,
+}) {
   const [userRating, setUserRating] = useState(0);
 
   if (!selectedMovieDetails) return null;
@@ -20,9 +25,12 @@ export function MovieCard({ selectedMovieDetails, closeModal, saveMovie }) {
   return (
     <section className="modal-overlay">
       <div className="modal">
-        <button className="close-btn" onClick={closeModal}>
-          X
-        </button>
+        <div className="modalButton">
+          <button className="close-btn" onClick={closeModal}>
+            X
+          </button>
+        </div>
+
         <div className="modal-header">
           <h1>Title: {title}</h1>
           <img src={poster} alt={title}></img>
@@ -37,13 +45,21 @@ export function MovieCard({ selectedMovieDetails, closeModal, saveMovie }) {
           Imdb Rating: {imdbRating}⭐ Your Rating: {userRating} ⭐
         </p>
         <p>Runtime: {runtime}</p>
-        <p>Rate the movie!</p>
-        <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
-        <div className="modal-button">
-          <button onClick={() => saveMovie(selectedMovieDetails, userRating)}>
-            Save
-          </button>
-        </div>
+        {!isAlreadyWatched ? (
+          <>
+            <p>Rate the movie!</p>
+            <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
+            <div className="modal-button">
+              <button
+                onClick={() => saveMovie(selectedMovieDetails, userRating)}
+              >
+                Save
+              </button>
+            </div>
+          </>
+        ) : (
+          <p>You already watched a movie!</p>
+        )}
       </div>
     </section>
   );

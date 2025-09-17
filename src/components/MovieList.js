@@ -1,5 +1,11 @@
+import backgroundMovie from "../background_movie.webp";
 export function MovieList({ data, onSelectMovie }) {
-  if (!data) return null;
+  if (!data)
+    return (
+      <div className="background-img">
+        <img src={backgroundMovie} alt="background_image"></img>
+      </div>
+    );
 
   const movies = data.Search.map((mov) => {
     return (
