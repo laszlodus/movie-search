@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-const KEY = "f5fb59f4";
+import { API_KEY } from "./Config";
 
 export function useApiRequest() {
   const [loading, setLoading] = useState(false);
@@ -13,7 +12,7 @@ export function useApiRequest() {
     setLoading(true);
     try {
       const res = await fetch(
-        `http://www.omdbapi.com/?s=${query}&apikey=${KEY}`
+        `http://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`
       );
       if (!res.ok) throw new Error("Request error!");
 

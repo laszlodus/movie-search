@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 import { MovieCard } from "./components/MovieCard.js";
 import SavedMoviesModal from "./components/SavedMoviesModal.js";
 import Footer from "./components/Footer.js";
-
-const KEY = "f5fb59f4";
+import { API_KEY } from "./components/Config.js";
 
 function App() {
   const { loading, error, data, fetchData } = useApiRequest();
@@ -65,7 +64,7 @@ function App() {
       setLoadingDetails(true);
       try {
         const res = await fetch(
-          `http://www.omdbapi.com/?i=${selectedMovie}&apikey=${KEY}`
+          `http://www.omdbapi.com/?i=${selectedMovie}&apikey=${API_KEY}`
         );
         if (!res.ok) throw new Error("Movie details error!");
         const data = await res.json();
