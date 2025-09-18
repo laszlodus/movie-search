@@ -21,6 +21,7 @@ export function MovieCard({
     Poster: poster,
     imdbRating,
     Runtime: runtime,
+    Year: year,
   } = selectedMovieDetails;
 
   return (
@@ -36,6 +37,7 @@ export function MovieCard({
           <img src={poster} alt={title}></img>
         </div>
         <p>Country: {country}</p>
+        <p>Year: {year}</p>
         <p>Director: {director}</p>
         <p>Genre: {genre}</p>
         <p>Language: {language}</p>
@@ -56,11 +58,12 @@ export function MovieCard({
           <>
             <p>Rate the movie!</p>
             <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
-            <div className="modal-button">
+            <div className="moviecard-btn-container">
               <button
+                className="moviecard-btn"
                 onClick={() => saveMovie(selectedMovieDetails, userRating)}
               >
-                Save
+                Add to watchlist
               </button>
             </div>
           </>

@@ -76,6 +76,7 @@ body {
   border-radius: 1rem;
   background-color: #6d2be7;
   color: #fff;
+  cursor: pointer;
 }
 
 /* Main */
@@ -89,8 +90,10 @@ body {
   text-align: center;
 }
 
-.movie-year {
+.movie-info {
   font-size: 1.6rem;
+  color: var(--primary-color);
+  text-decoration: underline;
 }
 
 /* MovieCard */
@@ -143,9 +146,17 @@ body {
   text-align: center;
 }
 
-.modal-button {
+.moviecard-btn-container {
   text-align: center;
   padding: 1rem;
+}
+
+.moviecard-btn {
+  background-color: var(--primary-color);
+  border-radius: 1rem;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
 }
 
 .modal-container {
@@ -156,8 +167,9 @@ body {
 .delete-btn {
   background-color: #6d2be7;
   color: #fff;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 1rem;
+  cursor: pointer;
 }
 
 .loading-text {

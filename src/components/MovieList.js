@@ -11,7 +11,7 @@ export function MovieList({ data, onSelectMovie }) {
       <div key={mov.imdbID} onClick={() => onSelectMovie(mov)}>
         <h1>{mov.Title}</h1>
         <img src={mov.Poster} alt={mov.Title}></img>
-        <p className="movie-year">{mov.Year}</p>
+        <p className="movie-info">More info</p>
       </div>
     );
   });
