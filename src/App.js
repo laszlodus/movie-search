@@ -94,7 +94,6 @@ function App() {
       {(error || errorDetails) && (
         <ErrorHandle error={error} errorDetails={errorDetails} />
       )}
-
       {!loading && !error && (
         <MovieList data={data} onSelectMovie={onSelectMovie} />
       )}
