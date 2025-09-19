@@ -10,7 +10,6 @@ export function MovieCard({
 }) {
   const [userRating, setUserRating] = useState(0);
 
-  if (!selectedMovieDetails) return null;
   const {
     Title: title,
     Country: country,

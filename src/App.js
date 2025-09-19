@@ -10,7 +10,7 @@ import { API_KEY } from "./components/Config.js";
 
 function App() {
   const { loading, error, data, fetchData } = useApiRequest();
-  const [selectedMovie, SetSelectedMovie] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
   const [selectedMovieDetails, setSelectedMovieDetails] = useState(null);
   const [loadingDetails, setLoadingDetails] = useState(false);
   const [errorDetails, setErrorDetails] = useState(null);
@@ -30,23 +30,27 @@ function App() {
     : null;
 
   function Loading({ loading, loadingDetails }) {
-    if (!loading || loadingDetails) return null;
+    if (!loading && !loadingDetails) return null;
     return <p className="loading-text">Loading...</p>;
   }
 
   function ErrorHandle({ error, errorDetails }) {
-    if (!error || errorDetails) return null;
-    return <p className="loading-text">{error.message}!</p>;
+    if (!error && !errorDetails) return null;
+    return (
+      <p className="loading-text">
+        {error ? error.message : errorDetails.message}!
+      </p>
+    );
   }
 
   function onSelectMovie(mov) {
-    SetSelectedMovie(mov.imdbID);
+    setSelectedMovie(mov.imdbID);
   }
 
   function closeModal() {
     setSelectedMovieDetails(null);
     setShowSavedModal(false);
-    SetSelectedMovie(null);
+    setSelectedMovie(null);
   }
 
   function saveMovie(movie, userRating) {
@@ -55,7 +59,7 @@ function App() {
     setWatched(updateWatched);
     localStorage.setItem("watched", JSON.stringify(updateWatched));
     setSelectedMovieDetails(null);
-    SetSelectedMovie(null);
+    setSelectedMovie(null);
   }
 
   useEffect(() => {
@@ -84,8 +88,13 @@ function App() {
         onSearch={fetchData}
         openSavedModal={() => setShowSavedModal(true)}
       />
-      {loading && <Loading loading={loading} loadingDetails={loadingDetails} />}
-      {error && <ErrorHandle error={error} errorDetails={errorDetails} />}
+      {(loading || loadingDetails) && (
+        <Loading loading={loading} loadingDetails={loadingDetails} />
+      )}
+      {(error || errorDetails) && (
+        <ErrorHandle error={error} errorDetails={errorDetails} />
+      )}
+
       {!loading && !error && (
         <MovieList data={data} onSelectMovie={onSelectMovie} />
       )}
