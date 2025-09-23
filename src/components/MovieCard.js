@@ -1,5 +1,6 @@
 import { useState } from "react";
 import StarRating from "./StarRating";
+import "./movieCard.css";
 
 export function MovieCard({
   selectedMovieDetails,
@@ -26,13 +27,13 @@ export function MovieCard({
   return (
     <section className="modal-overlay">
       <div className="modal">
-        <div className="modalButton">
+        <div className="close-btn-container">
           <button className="close-btn" onClick={closeModal}>
             X
           </button>
         </div>
         <div className="modal-header">
-          <h1>Title: {title}</h1>
+          <h1>{title}</h1>
           <img src={poster} alt={title}></img>
         </div>
         <p>Country: {country}</p>
@@ -40,7 +41,8 @@ export function MovieCard({
         <p>Director: {director}</p>
         <p>Genre: {genre}</p>
         <p>Language: {language}</p>
-        <p>Plot: {plot}</p>
+        <p>{plot}</p>
+        <p>Runtime: {runtime}</p>
         {!isAlreadyWatched ? (
           <>
             <p>
@@ -52,7 +54,7 @@ export function MovieCard({
             Imdb Rating: {imdbRating}⭐ Your Rating: {alreadyRated}⭐
           </p>
         )}
-        <p>Runtime: {runtime}</p>
+
         {!isAlreadyWatched ? (
           <>
             <p>Rate the movie!</p>

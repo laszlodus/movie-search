@@ -1,3 +1,4 @@
+import "./movieList.css";
 export function MovieList({ data, onSelectMovie }) {
   if (!data)
     return (

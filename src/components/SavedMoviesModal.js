@@ -1,3 +1,4 @@
+import "./savedMoviesModal.css";
 export default function SavedMoviesModal({ watched, closeModal, setWatched }) {
   if (watched.length === 0) return null;
   function deleteMovie(id) {

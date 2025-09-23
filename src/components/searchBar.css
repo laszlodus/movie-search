@@ -1,0 +1,41 @@
+.App-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.4rem;
+  color: var(--primary-color);
+  text-align: center;
+  background-color: var(--secondary-color);
+  padding: 1rem;
+}
+
+.search-input {
+  max-width: 30rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin: 0.5rem;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-button {
+  border-radius: 1rem;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.watched-button {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #6d2be7;
+  color: #fff;
+  cursor: pointer;
+}

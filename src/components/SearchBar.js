@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./searchBar.css";
 
 export function Header({ onSearch, openSavedModal }) {
   const date = new Date();

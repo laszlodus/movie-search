@@ -1,12 +1,12 @@
 import "./App.css";
 import { Header } from "./components/SearchBar.js";
-import { useApiRequest } from "./components/useApiRequest.js";
+import { useApiRequest } from "./services/useApiRequest.js";
 import { MovieList } from "./components/MovieList.js";
 import { useEffect, useState } from "react";
 import { MovieCard } from "./components/MovieCard.js";
 import SavedMoviesModal from "./components/SavedMoviesModal.js";
 import Footer from "./components/Footer.js";
-import { API_KEY } from "./components/Config.js";
+import { API_KEY } from "./services/Config.js";
 
 function App() {
   const { loading, error, data, fetchData } = useApiRequest();
@@ -88,31 +88,33 @@ function App() {
         onSearch={fetchData}
         openSavedModal={() => setShowSavedModal(true)}
       />
-      {(loading || loadingDetails) && (
-        <Loading loading={loading} loadingDetails={loadingDetails} />
-      )}
-      {(error || errorDetails) && (
-        <ErrorHandle error={error} errorDetails={errorDetails} />
-      )}
-      {!loading && !error && (
-        <MovieList data={data} onSelectMovie={onSelectMovie} />
-      )}
-      {selectedMovieDetails ? (
-        <MovieCard
-          selectedMovieDetails={selectedMovieDetails}
-          closeModal={closeModal}
-          saveMovie={saveMovie}
-          isAlreadyWatched={isAlreadyWatched}
-          alreadyRated={alreadyRated?.userRating}
-        />
-      ) : null}
-      {showSavedModal ? (
-        <SavedMoviesModal
-          watched={watched}
-          closeModal={closeModal}
-          setWatched={setWatched}
-        />
-      ) : null}
+      <div className="main-container">
+        {(loading || loadingDetails) && (
+          <Loading loading={loading} loadingDetails={loadingDetails} />
+        )}
+        {(error || errorDetails) && (
+          <ErrorHandle error={error} errorDetails={errorDetails} />
+        )}
+        {!loading && !error && (
+          <MovieList data={data} onSelectMovie={onSelectMovie} />
+        )}
+        {selectedMovieDetails ? (
+          <MovieCard
+            selectedMovieDetails={selectedMovieDetails}
+            closeModal={closeModal}
+            saveMovie={saveMovie}
+            isAlreadyWatched={isAlreadyWatched}
+            alreadyRated={alreadyRated?.userRating}
+          />
+        ) : null}
+        {showSavedModal ? (
+          <SavedMoviesModal
+            watched={watched}
+            closeModal={closeModal}
+            setWatched={setWatched}
+          />
+        ) : null}
+      </div>
       <Footer />
     </div>
   );

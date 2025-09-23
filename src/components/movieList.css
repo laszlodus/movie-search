@@ -1,0 +1,78 @@
+.movie-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  cursor: pointer;
+  gap: 1rem;
+  text-align: center;
+}
+.movie-list > div {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 25rem;
+  height: 50rem;
+  padding: 0.5rem;
+  margin: 2rem;
+}
+
+.movie-list img {
+  width: 100%;
+  height: 80%;
+  object-fit: cover; /* megtartja az arányt és kitölti a képet */
+  border-radius: 5px;
+}
+
+.movie-list h1 {
+  font-size: 1.6rem;
+  margin: 0.5rem 0 0.2rem 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: wrap;
+}
+
+.background-img {
+  width: 100%;
+  height: calc(100vh - 384px);
+  display: flex;
+  justify-content: center;
+}
+
+.background-img img {
+  width: 100%;
+  max-width: 1600px;
+  height: auto;
+  object-fit: cover;
+}
+
+.movie-info {
+  font-size: 1.6rem;
+  color: #fff;
+  text-decoration: underline;
+}
+
+@media (min-width: 550px) {
+  .movie-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 900px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .movie-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1600px) {
+  .movie-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
