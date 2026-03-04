@@ -1,10 +1,14 @@
 import "./footer.css";
 export default function Footer() {
+  const startYear = 2025;
   const date = new Date();
-  const year = date.getFullYear();
+  const currentYear = date.getFullYear();
   return (
     <footer>
-      <p className="footer">&copy; {year} Created by Laszlo Dus</p>
+      <p className="footer">
+        &copy; {startYear} - {currentYear > startYear && `- ${currentYear}`}
+        Created by Laszlo Dus
+      </p>
     </footer>
   );
 }
