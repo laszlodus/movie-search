@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import "./searchBar.css";
 
 export function Header({ onSearch, openSavedModal }) {
-  const date = new Date();
-  const year = date.getFullYear();
   const [query, setQuery] = useState("");
 
   function handleChange(value) {
@@ -17,7 +15,7 @@ export function Header({ onSearch, openSavedModal }) {
 
   return (
     <header className="App-header">
-      <h1>Movie Search {year}</h1>
+      <h1>Movie Search</h1>
       <div className="search-container">
         <input
           type="text"

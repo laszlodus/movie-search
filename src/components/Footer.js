@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer>
       <p className="footer">
-        &copy; {startYear} - {currentYear > startYear && `- ${currentYear}`}
+        &copy; {startYear} {currentYear > startYear && `- ${currentYear} `}
         Created by Laszlo Dus
       </p>
     </footer>
